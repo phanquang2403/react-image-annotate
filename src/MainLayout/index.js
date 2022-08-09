@@ -33,6 +33,7 @@ import { useSettings } from "../SettingsProvider"
 import { withHotKeys } from "react-hotkeys"
 import DocumentTypesSideBarBox from "../DocumentTypesSideBarBox"
 import SaveAsIcon from '@mui/icons-material/SaveAs';
+import RedoHistory from "../RedoHistory"
 // import Fullscreen from "../Fullscreen"
 
 const emptyArr = []
@@ -401,10 +402,18 @@ return (
                   keyframes={state.keyframes}
                 />
               ),
+              <RedoHistory 
+                state={state}
+                history={state.history} 
+                fufuteHistory={state.fufuteHistory} 
+                onRedoHistory={action("REDO_HISTORY")}
+              />,
               <HistorySidebarBox
                 history={state.history}
                 onRestoreHistory={action("RESTORE_HISTORY")}
+                // onRedoHistory={action("REDO_HISTORY")}
               />,
+              
 
             ].filter(Boolean)}
           >

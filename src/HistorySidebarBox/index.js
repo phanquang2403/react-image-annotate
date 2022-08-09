@@ -11,6 +11,7 @@ import ListItemText from "@mui/material/ListItemText"
 import IconButton from "@mui/material/IconButton"
 import ListItemSecondaryAction from "@mui/material/ListItemSecondaryAction"
 import UndoIcon from "@mui/icons-material/Undo"
+import RedoIcon from '@mui/icons-material/Redo';
 import moment from "moment"
 import { grey } from "@mui/material/colors"
 import isEqual from "lodash/isEqual"
@@ -32,14 +33,16 @@ const listItemTextStyle = { paddingLeft: 16 }
 export const HistorySidebarBox = ({
   history,
   onRestoreHistory,
+  onRedoHistory,
+  
 }: {
   history: Array<{ name: string, time: Date }>,
 }) => {
   const classes = useStyles()
-
+  
   return (
     <ThemeProvider theme={theme}>
-      {/* <SidebarBoxContainer
+      <SidebarBoxContainer
         title="History"
         icon={<HistoryIcon style={{ color: grey[700] }} />}
         expandedByDefault
@@ -49,23 +52,29 @@ export const HistorySidebarBox = ({
             <div className={classes.emptyText}>No History Yet</div>
           )}
           {history.map(({ name, time }, i) => (
+            
             <ListItem button dense key={i}>
               <ListItemText
                 style={listItemTextStyle}
-                primary={name}
+                primary={name + i}
                 secondary={moment(time).format("LT")}
               />
               {i === 0 && (
-                <ListItemSecondaryAction onClick={() => onRestoreHistory()}>
-                  <IconButton>
-                    <UndoIcon />
-                  </IconButton>
-                </ListItemSecondaryAction>
+                <>
+                  <ListItemSecondaryAction style={{ "marginRight": "40px"}} onClick={() => onRestoreHistory()}>
+                    <IconButton>
+                      <UndoIcon />
+                    </IconButton>
+
+                  </ListItemSecondaryAction>
+                 
+                </>
+                
               )}
             </ListItem>
           ))}
         </List>
-      </SidebarBoxContainer> */}
+      </SidebarBoxContainer>
     </ThemeProvider>
   )
 }

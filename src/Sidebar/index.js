@@ -42,6 +42,7 @@ type Props = {
   onChangeRegion: (Region) => any,
   onDeleteRegion: (Region) => any,
   onRestoreHistory: () => any,
+  onRedoHistory: () => any,
   onShortcutActionDispatched: (action: any) => any,
 }
 
@@ -65,6 +66,7 @@ export const Sidebar = ({
   onChangeRegion,
   onDeleteRegion,
   onRestoreHistory,
+  onRedoHistory,
   onChangeVideoTime,
   onDeleteKeyframe,
   onShortcutActionDispatched,
@@ -107,6 +109,7 @@ export const Sidebar = ({
         <History
           history={history}
           onRestoreHistory={() => onRestoreHistory()}
+          onRedoHistory={() => onRedoHistory()}
         />
         {/* <Shortcuts onShortcutActionDispatched={onShortcutActionDispatched} /> */}
       </Container>
