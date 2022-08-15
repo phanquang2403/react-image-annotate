@@ -63,6 +63,11 @@ export const defaultHotkeys = [
     description: "Undo latest change",
     binding: "Ctrl+z",
   },
+  {
+    id: "redo",
+    description: "redo history change",
+    binding: "",
+  },
 ]
 export const defaultKeyMap = {}
 for (const { id, binding } of defaultHotkeys) defaultKeyMap[id] = binding
@@ -138,6 +143,11 @@ export const useDispatchHotkeyHandlers = ({ dispatch }) => {
       undo: () => {
         dispatch({
           type: "RESTORE_HISTORY",
+        })
+      },
+      redo: () => {
+        dispatch({
+          type: "REDO_HISTORY",
         })
       },
       // TODO

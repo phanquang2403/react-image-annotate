@@ -141,6 +141,7 @@ export const Annotator = ({
       currentVideoTime: videoTime,
       enabledTools,
       history: [],
+      futureHistory : [],
       videoName,
       keypointDefinitions,
       allowComments,
